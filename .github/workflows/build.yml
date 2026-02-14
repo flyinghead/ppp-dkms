@@ -13,16 +13,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-		  path: ppp-dkms-5.10
+          path: ppp-dkms-5.10
 
       - name: Mark git repository as safe
         run: git config --global --add safe.directory $PWD/ppp-dkms-5.10
 
       - run: |
-	      cd ppp-dkms-5.10
+          cd ppp-dkms-5.10
           dpkg-buildpackage -us -uc -rfakeroot -sa -F
-		  cd ..
-		  mv ppp-dkms*.deb `basename ppp-dkms*.deb .deb`_bullseye.deb
+          cd ..
+          mv ppp-dkms*.deb `basename ppp-dkms*.deb .deb`_bullseye.deb
       - uses: actions/upload-artifact@v4
         with:
           name: ppp-dkms-5.10
