@@ -1,0 +1,9 @@
+/.debhelper/
+/ppp-dkms/
+/debhelper-build-stamp
+/files
+/ppp-dkms.debhelper.log
+/ppp-dkms.dkms
+/ppp-dkms.postinst.debhelper
+/ppp-dkms.prerm.debhelper
+/ppp-dkms.substvars

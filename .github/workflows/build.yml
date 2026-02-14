@@ -1,0 +1,29 @@
+name: Build Debian Package
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: debian-11-bullseye
+    runs-on: ubuntu-latest
+    container: debian:11
+
+    steps:
+      - run: apt-get -qy update && DEBIAN_FRONTEND=noninteractive apt-get -qy install dkms dpkg-buildpackage
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+		  path: ppp-dkms-5.10
+
+      - name: Mark git repository as safe
+        run: git config --global --add safe.directory $PWD/ppp-dkms-5.10
+
+      - run: |
+	      cd ppp-dkms-5.10
+          dpkg-buildpackage -us -uc -rfakeroot -sa -F
+		  cd ..
+		  mv ppp-dkms*.deb `basename ppp-dkms*.deb .deb`_bullseye.deb
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ppp-dkms-5.10
+          path: "*.deb"
