@@ -1,5 +1,5 @@
-ppp-dkms (6.1-1) bookworm; urgency=medium
+ppp-dkms (6.18-1) trixie; urgency=medium
 
   * Initial release
 
- -- Flyinghead <flyinghead.github@gmail.com>  Fri, 14 Feb 2026 17:03:00 +0100
+ -- Flyinghead <flyinghead.github@gmail.com>  Fri, 14 Feb 2026 21:52:42 +0100

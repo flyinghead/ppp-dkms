@@ -4,26 +4,26 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: debian-12-bookworm
+    name: debian-13-trixie
     runs-on: ubuntu-latest
-    container: debian:12
+    container: debian:13
 
     steps:
       - run: apt-get -qy update && DEBIAN_FRONTEND=noninteractive apt-get -qy install dkms debhelper git dh-dkms
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          path: ppp-dkms-6.1
+          path: ppp-dkms-6.18
 
       - name: Mark git repository as safe
-        run: git config --global --add safe.directory $PWD/ppp-dkms-6.1
+        run: git config --global --add safe.directory $PWD/ppp-dkms-6.18
 
       - run: |
-          cd ppp-dkms-6.1
+          cd ppp-dkms-6.18
           dpkg-buildpackage -us -uc -rfakeroot -sa -F
           cd ..
-          mv ppp-dkms*.deb `basename ppp-dkms*.deb .deb`_bookworm.deb
+          mv ppp-dkms*.deb `basename ppp-dkms*.deb .deb`_trixie.deb
       - uses: actions/upload-artifact@v4
         with:
-          name: ppp-dkms-6.1
+          name: ppp-dkms-6.18
           path: "*.deb"

@@ -3,7 +3,7 @@
 # Makefile for the Linux PPP network device drivers.
 #
 MODULE=ppp_async
-VERSION=6.1
+VERSION=6.18
 KVERSION := $(shell uname -r)
 KDIR := /lib/modules/${KVERSION}/build
 
