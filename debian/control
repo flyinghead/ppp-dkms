@@ -1,0 +1,14 @@
+Source: ppp-dkms
+Section: kernel
+Priority: optional
+Maintainer: Flyinghead <flyinghead.github@gmail.com>
+Build-Depends: debhelper-compat (= 13), dkms
+Standards-Version: 4.6.0
+Homepage: https://github.com/flyinghead/dcnet-ap
+Rules-Requires-Root: binary-targets
+
+Package: ppp-dkms
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: ppp_async, ppp and slhc drivers
+ ppp_async, ppp and slhc in-tree drivers for genericcloud debian images.
