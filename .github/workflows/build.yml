@@ -9,7 +9,7 @@ jobs:
     container: debian:12
 
     steps:
-      - run: apt-get -qy update && DEBIAN_FRONTEND=noninteractive apt-get -qy install dkms debhelper git
+      - run: apt-get -qy update && DEBIAN_FRONTEND=noninteractive apt-get -qy install dkms debhelper git dh-dkms
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
